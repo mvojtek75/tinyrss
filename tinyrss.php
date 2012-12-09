@@ -14,14 +14,20 @@
       return "rss"; 
   }
   
-  function tinyRssHeader ($ATitle, $ADescription, $AWebMaster, $ALinkToRssItself) {
+  function tinyRssHeader ($ATitle, $ADescription, $AWebMaster, $ALinkToRssItself=NULL) {
     // create RSS file header
     // debuging
     $tiny_rss_content_type = "text/xml";
-    if (@$_REQUEST['debug'] == 'true')
+    if (@$_REQUEST["debug"] == 'true')
       $tiny_rss_content_type = "text/plain"; 
-    // FIXME: perhaps $ALinkToRssItself can be determined from environment variables of executing script or so. Bbut maybe the feed itself is somewhere else and this is just filter of rss
     $ALinkToRssItself = htmlspecialchars($ALinkToRssItself);
+    // guess url of rss feed itself
+    if (empty($ALinkToRssItself)) {
+      $protocol = "http://";
+      if (!strstr($_SERVER["SERVER_PROTOCOL"],"HTTP/"))
+        $protocol = "https://";
+      $ALinkToRssItself = $protocol.$_SERVER["SERVER_NAME"].$_SERVER["SCRIPT_NAME"];
+    }
     $ATitle = htmlspecialchars($ATitle);
     $ADescription = htmlspecialchars($ADescription);
     header("Content-Type: $tiny_rss_content_type");
