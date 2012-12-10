@@ -12,6 +12,7 @@ Functions
 
 - tinyRssItem ($ATitle, $ADescription, $ALink, $ALinkComments=NULL, $AGuid=NULL, $ACategory='news', $ADate=NULL)
 
+  Adds single news item.
   GUID is by default md5($ATitle.$ADescription) or you can specify your 
   own, e.g. serial from some table. If you don't specify date then 
   current date will be used, but if GUID is unique then it works fine.
