@@ -1,12 +1,14 @@
 tinyrss
 =======
 
-Small (3kB) and simple (4 functions) PHP library for creating RSS feeds.
+Small (3kB) and simple (5 functions) PHP library for creating RSS feeds.
 
 Functions
 ---------
 
 - tinyRssHeader ($ATitle, $ADescription, $AAuthorEmail, $ALinkToRssItself=NULL)
+
+  Print header with some basic information.
 
 - tinyRssItem ($ATitle, $ADescription, $ALink, $ALinkComments=NULL, $AGuid=NULL, $ACategory='news', $ADate=NULL)
 
@@ -15,6 +17,17 @@ Functions
   current date will be used, but if GUID is unique then it works fine.
 
 - tinyRssFooter ()
+
+  Ends feed.
+
+- tinyRssComment($AComment)
+
+  Usefull for debuging. Also you can use ?debug=true to view feed in browser.
+
+- tinyRssDie ($AMessage)
+  
+  When something bad happen while you generating feed and you need to abort
+  but still needs for feed to be valid.
 
 Example
 -------
