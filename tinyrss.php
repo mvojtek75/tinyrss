@@ -76,7 +76,7 @@
   function tinyRssDie($AMessage) {
     // terminate RSS file and stop running script, e.g. for db error or other reasons, but keeps XML valid
     tinyRssComment($AMessage);
-    tinyRssEnd();
+    tinyRssFooter();
     die();
   }
 
